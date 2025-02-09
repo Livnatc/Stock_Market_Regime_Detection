@@ -56,5 +56,5 @@ def compute_technical_indicators(df, short_window=12, long_window=26, signal_win
 data = fetch_stock_data('AAPL')
 features = compute_technical_indicators(data)
 
-data.to_csv('data\\AAPL.csv')
-features.to_csv('data\\AAPL_features.csv')
+data.to_csv('../data/AAPL.csv')
+features.to_csv('../data/AAPL_features.csv')
