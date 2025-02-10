@@ -1,7 +1,10 @@
 import yfinance as yf
-import pandas as pd
-import numpy as np
 from sklearn.preprocessing import MinMaxScaler
+import numpy as np
+import pandas as pd
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+
 
 
 def normalize_data(df):
@@ -86,12 +89,6 @@ def compute_technical_indicators(df, short_window=12, long_window=26, signal_win
     df["Volatility"] = df["Log_Return"].rolling(volatility_window).std()
 
     return df.dropna()  # Remove NaN values caused by rolling calculations
-
-
-import numpy as np
-import pandas as pd
-from sklearn.cluster import KMeans
-from sklearn.preprocessing import StandardScaler
 
 
 def label_volatility_clusters(data, window=20):
