@@ -137,23 +137,17 @@ def label_threshold_based(data):
     return data
 
 
-data = fetch_stock_data('AAPL')
-features = compute_technical_indicators(data)
+def process(st):
 
+    data = fetch_stock_data(st)
+    features = compute_technical_indicators(data)
 
-data.to_csv('../data/AAPL.csv')
-features.to_csv('../data/AAPL_features.csv')
+    data.to_csv(f'../data/{st}.csv')
+    features.to_csv(f'../data/{st}_features.csv')
 
+    # Apply regime labeling methods
+    # stock_data = label_volatility_clusters(features)
+    stock_data = label_kmeans_clusters(features)
+    # stock_data = label_threshold_based(features)
 
-# Apply regime labeling methods
-# stock_data = label_volatility_clusters(features)
-stock_data = label_kmeans_clusters(features)
-# stock_data = label_threshold_based(features)
-
-
-# # Normalize data (excluding 'Regime' column)
-normalized_data, scaler = normalize_data(stock_data.drop(columns=["Regime"]))
-
-# Create sequences
-X, y = create_sequences(normalized_data, stock_data["Regime"])
-
+    return stock_data.iloc[:, -9:-1], stock_data.iloc[:, -1]
