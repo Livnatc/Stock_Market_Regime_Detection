@@ -24,5 +24,5 @@ if __name__ == '__main__':
     model.fit(X_train, y_train, epochs=20, batch_size=32, validation_data=(X_test, y_test))
 
     # save the model
-    model.save('model.h5')
+    model.save('../models/model.h5')
     print('Done')
