@@ -2,12 +2,12 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Dense, LayerNormalization, Dropout, MultiHeadAttention, Conv1D
+from tensorflow.keras.layers import Input, Dense, LayerNormalization, Dropout, MultiHeadAttention, GlobalAveragePooling1D
 from sklearn.preprocessing import MinMaxScaler
 
 
 # Convert data to sequences
-def create_sequences(data, labels, seq_length=32):
+def create_sequences(data, labels, seq_length=30):
     X, y = [], []
     for i in range(len(data) - seq_length):
         X.append(data[i:i + seq_length])
@@ -34,6 +34,10 @@ def build_model(input_shape1, input_shape2):
     input_layer = Input(shape=(input_shape1, input_shape2))
     x = transformer_encoder(input_layer, head_size=64, num_heads=4, ff_dim=128)
     x = transformer_encoder(x, head_size=64, num_heads=4, ff_dim=128)
+
+    # Pooling to reduce sequence dimension
+    x = GlobalAveragePooling1D()(x)  # Converts (batch_size, 30, feature_dim) → (batch_size, feature_dim)
+
     x = Dense(64, activation="relu")(x)
     x = Dropout(0.1)(x)
     output_layer = Dense(3, activation="softmax")(x)  # 3 regimes: Bull, Bear, Sideways
