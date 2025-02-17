@@ -136,6 +136,10 @@ We also backtest a simple **long-short strategy** based on detected regimes:
 - **Short positions in Bear markets** 🔴
 - **No trades in Sideways markets** ⚪
 
+Example for prediction results above certain stock:
+![predicted_results](https://github.com/user-attachments/assets/32428d33-c9cb-4f87-892a-88b182b8a2f3)
+
+
 ---
 
 ## 📌 Next Steps
