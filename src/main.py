@@ -7,7 +7,7 @@ import train as Train
 if __name__ == '__main__':
 
     # Load and normalize data
-    stock = 'AAPL'
+    stock = 'MSFT'
     data, labels = dh.process(stock)  # brings the features and labels
 
     scaler = MinMaxScaler()
