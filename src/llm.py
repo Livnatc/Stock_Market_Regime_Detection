@@ -86,7 +86,7 @@ def explain_outcome(stock, technical_data, prediction):
     messages = [
         {"role": "system", "content": "You are a finance chatbot developed by Wiro AI"},
         {"role": "user", "content":
-            f"If {stock} stock has {technical_data['RSI']} of 68 and {technical_data['MACD']} of 1.5, do you think  it is a {prediction} position? "
+            f"If {stock} stock has {technical_data['RSI'][-1]} and {technical_data['MACD'][-1]} , do you think  it is a {prediction} position? "
       },
     ]
 

@@ -4,10 +4,11 @@ from tensorflow.keras.layers import Input, Dense, LayerNormalization, Dropout, M
 from sklearn.preprocessing import MinMaxScaler
 import train as Train
 
+
 if __name__ == '__main__':
 
     # Load and normalize data
-    stock = 'MSFT'
+    stock = 'AAPL'
     data, labels = dh.process(stock)  # brings the features and labels
 
     scaler = MinMaxScaler()
@@ -26,3 +27,5 @@ if __name__ == '__main__':
     # save the model
     model.save('../models/model.h5')
     print('Done')
+
+
