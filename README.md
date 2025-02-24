@@ -118,7 +118,7 @@ model.fit(X_train, y_train, epochs=20, batch_size=32, validation_data=(X_test, y
 
 ---
 
-## 📈 Predictions & Backtesting
+## 📈 Predictions & Results
 Once trained, we predict market regimes and visualize them alongside stock prices:
 ```python
 import matplotlib.pyplot as plt
