@@ -1,4 +1,6 @@
 pip==25.0.1
+setuptools>=65.5.0
+wheel
 streamlit==1.40.1
 tensorboard==2.13.0
 tensorboard-data-server==0.7.2
